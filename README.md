@@ -40,3 +40,58 @@ google_assistant:
   report_state: true
   expose_by_default: false
   entity_config: !include google_assistant.entity_config.yaml
+```
+
+> ⚠️ This integration is meant for the manual Google Assistant setup (via Google Cloud / Actions SDK).
+It does not modify Nabu Casa Cloud settings.
+
+
+
+
+---
+
+Usage
+
+1. In Home Assistant, assign the label Google Home (or your configured label) to any entity or device you want to expose.
+
+
+2. Press GA Labels: Rebuild → generates/updates google_assistant.entity_config.yaml.
+
+
+3. Restart Home Assistant (GA YAML is loaded only at startup).
+
+
+4. Press GA Labels: Request Sync → pushes changes to Google Assistant.
+
+
+5. (Optional) Toggle GA Labels: Map Areas → Rooms switch to automatically assign Google Assistant rooms from HA areas.
+
+
+
+
+---
+
+Example workflow
+
+Label a light with Google Home and assign it to area Living Room.
+
+Run Rebuild → YAML entry will look like:
+
+entity_config:
+  light.livingroom_ceiling:
+    expose: true
+    room: Living Room
+
+Restart HA → Press Request Sync → The light appears in Google Home, already in the correct room.
+
+
+
+---
+
+Notes
+
+Requires Home Assistant 2024.4+ (for label registry support).
+
+Aliases and custom names are not managed here – you can set them directly in the Google Home app.
+
+File is generated at config/google_assistant.entity_config.yaml with a .bak backup.
