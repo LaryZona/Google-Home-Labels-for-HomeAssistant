@@ -1,5 +1,5 @@
 {
-    "name": "HACS",
+    "name": "Google Home Label Sync",
     "render_readme": true,
     "content_in_root": false,
     "domains": ["Google Home Label Sync"],
