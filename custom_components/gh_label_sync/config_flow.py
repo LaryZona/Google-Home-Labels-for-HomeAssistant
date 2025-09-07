@@ -15,11 +15,11 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_create_entry(title="Google Home Label Sync", data=user_input)
 
         schema = vol.Schema({
-            vol.Optional(CONF_LABEL, default=data.get(CONF_LABEL, DEFAULT_LABEL)): str,
-            vol.Optional(CONF_MAP_AREAS, default=data.get(CONF_MAP_AREAS, True)): bool,
-            vol.Optional(CONF_NOTIFY, default=data.get(CONF_NOTIFY, True)): bool,             
-            vol.Optional(CONF_AUTOREBUILD, default=data.get(CONF_AUTOREBUILD, False)): bool,   
-            vol.Optional(CONF_BROWSER_POPUP, default=data.get(CONF_BROWSER_POPUP, True)): bool 
+            vol.Optional(CONF_LABEL, default=DEFAULT_LABEL): str,
+            vol.Optional(CONF_MAP_AREAS, default=True): bool,
+            vol.Optional(CONF_NOTIFY, default=True): bool,
+            vol.Optional(CONF_AUTOREBUILD, default=False): bool,
+            vol.Optional(CONF_BROWSER_POPUP, default=True): bool,
         })
         return self.async_show_form(step_id="user", data_schema=schema)
 

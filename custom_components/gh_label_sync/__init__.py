@@ -6,7 +6,11 @@ from homeassistant.helpers import entity_registry as er, area_registry as ar, de
 from homeassistant.helpers import label_registry as lr  # HA >= 2024.4
 from homeassistant.const import Platform
 
-from .const import DOMAIN, CONF_LABEL, CONF_MAP_AREAS, DEFAULT_LABEL, OUTFILE, PLATFORMS
+from .const import (
+    DOMAIN, CONF_LABEL, CONF_MAP_AREAS,
+    CONF_NOTIFY, CONF_AUTOREBUILD, CONF_BROWSER_POPUP,
+    DEFAULT_LABEL, OUTFILE, PLATFORMS
+)
 
 import os, traceback
 
@@ -126,7 +130,6 @@ async def _rebuild(hass: HomeAssistant, label_name: str, map_areas: bool):
     lab_reg = lr.async_get(hass)
     area_reg = ar.async_get(hass)
 
-    wanted = (label_name or "").strip().lower()
     target_label = next((l for l in lab_reg.labels.values()
                         if (l.name or "").strip().lower() == (label_name or "").strip().lower()), None)    
     target_label_id = _get_label_id(target_label) if target_label else None
