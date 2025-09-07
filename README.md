@@ -1,4 +1,4 @@
-# Google-Home-Labels-for-HomeAssistant
+# Google Home Label Sync
 
 !Work in Progress!
 
